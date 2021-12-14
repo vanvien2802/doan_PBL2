@@ -86,7 +86,7 @@ bool NhanVienKinhDoanh::checkID(wstring id)
     }
     else
     {
-        wcout << L"\n\t\t\t\t\t\tERROR !!! Mã số phải bắt đầu bằng kí tự 'KD' + Số tự nhiên ! Vui lòng nhập lại ! ";
+        wcout << L"\n\t\t\t\t\t\tERROR !!! Mã số phải bắt đầu bằng kí tự 'KD' + Số thứ tự < 10000 ! Vui lòng nhập lại ! ";
         return false;
     }
 }
@@ -95,19 +95,27 @@ void NhanVienKinhDoanh::DoUpdateID()
 {
     _setmode(_fileno(stdout), _O_WTEXT); //needed for output
     _setmode(_fileno(stdin), _O_WTEXT);  //needed for input
-
-    bool check = false;
     wstring id;
+    wcout << L"\n\n\t\t\t\t\t\t\t\t\t\tNhập Mã Số mới : ";
+    fflush(stdin);
+    getline(wcin, id);
     while (true)
     {
         if (id[0] == 'K' && id[1] == 'D')
         {
             break;
         }
+        else if(id.length() > 6)
+        {
+            wcout << L"\n\n\t\t\t\t\t\t\t\tERROR !!! Mã số phải bắt đầu bằng kí tự 'KD' + Số thứ tự < 10000 ! Vui lòng nhập lại !";
+            wcout << L"\n\t\t\t\t\t\t\t\tNhập Mã Số mới : ";
+            fflush(stdin);
+            getline(wcin, id);
+        }
         else
         {
-            wcout << L"\n\t\t\t\t\t\tERROR !!! Mã số phải bắt đầu bằng kí tự 'KD' + Số tự nhiên ! Vui lòng nhập lại ! ";
-            wcout << L"\n\n\t\t\t\t\t\t\t\tNhập Mã Số sửa đổi : ";
+            wcout << L"\n\n\t\t\t\t\t\t\t\tERROR !!! Mã số phải bắt đầu bằng kí tự 'KD' + Số thứ tự < 10000 ! Vui lòng nhập lại ! ";
+            wcout << L"\n\t\t\t\t\t\t\t\tNhập Mã Số mới : ";
             fflush(stdin);
             getline(wcin, id);
         }
@@ -135,19 +143,12 @@ void NhanVienKinhDoanh::setSHD(int skh)
     this->SoHopDong = skh;
 }
 
-void NhanVienKinhDoanh::Xuat()
+void NhanVienKinhDoanh::Xuatfile(wofstream &fileout,int kt)
 {
-    _setmode(_fileno(stdout), _O_WTEXT); //needed for output
-    _setmode(_fileno(stdin), _O_WTEXT);  //needed for input
-    NhanVien::Xuat();
-    wcout << L"Số Hợp Đồng : " << this->SoHopDong << endl;
-    wcout << L"Lương nhân viên sau 1 tháng : " << NhanVienKinhDoanh::TinhLuong() << endl;
-}
-void NhanVienKinhDoanh::Xuatfile(wofstream &fileout)
-{
-    _setmode(_fileno(stdout), _O_WTEXT); //needed for output
-    _setmode(_fileno(stdin), _O_WTEXT);  //needed for inputs
-    NhanVien::Xuatfile(fileout);
-    fileout << L"Số Hợp Đồng : " << this->SoHopDong << endl;
-    fileout << L"Lương nhân viên sau 1 tháng : " << NhanVienKinhDoanh::TinhLuong() << endl;
+    NhanVien::Xuatfile(fileout,kt);
+    if(kt==1)
+    {
+        fileout << this->SoHopDong ;
+    }
+    else fileout << this->SoHopDong <<endl;
 }

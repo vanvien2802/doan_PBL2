@@ -6,12 +6,9 @@ class NhanVienSanXuat : public NhanVien
 private:
     int SoSanPham;
 public:
-    // NhanVienSanXuat();
-    // ~NhanVienSanXuat();
     void Nhap();
 	void DocFile(wifstream &);
-	void Xuat();
-	void Xuatfile(wofstream &);
+	void Xuatfile(wofstream &,int);
     void Update();
     void DoUpdate(int);
     void setSSP(int);

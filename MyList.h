@@ -33,6 +33,7 @@ public:
 	void XoaNodeTheoTen (list &,wstring);
 	void XuatDanhSach(list ,int);
 	void XuatDanhSachVaoFile(list&, wofstream &);
+	void XuatDanhSachVaoFileX(list&, wofstream &);
 	bool CheckID(list&,wstring);
 	void UpdateID(list&,NhanVien *);
 };

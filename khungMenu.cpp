@@ -1,7 +1,5 @@
 #include <iostream>
-// #include <windows.h>
 #include <conio.h> // getch()
-// #include "MyList.h"
 #include "mylib.h" // đồ họa
 #include <fcntl.h> // sử dụng tiếng việt với console tiếng việt
 #include <io.h>    // sử dụng tiếng việt với console tiếng việt
@@ -621,63 +619,7 @@ void tiltle()
     gotoXY(128, 8);
     wcout << L"  ───      ───" << endl;
 }
-//================================================//
-void khungchua()
-{
-    clrscr();
-    for (int i = 0; i <= 45; i++)
-    {
-        for (int j = 0; j <= 199; j = j + 100)
-        {
-            textcolor(240);
-            gotoXY(j, i);
-            wcout << L"                                                                                                    ";
-        }
-    }
-}
 
-void resetbackground()
-{
-    clrscr();
-    for (int i = 0; i <= 45; i++)
-    {
-        for (int j = 0; j <= 200; j = j + 100)
-        {
-            textcolor(1);
-            gotoXY(j, i);
-            wcout << L"                                                                                                    ";
-        }
-    }
-}
-//================================================//
-int checkkitu(wstring a, wstring b)
-{
-    wstring a1 = L"aáàảạãăắằẳặẵâấầẩậẫbcdđeéèẻẹẽêếềểệễghiíìỉịĩklmnoóòỏọõôốồổộỗơớờởợỡpqrstuúùủụũưứừửữựvxyýỳỷỹỵwzjf";
-    wstring a2 = L"AÁÀẢẠÃĂẮẰẲẶẴÂẤẦẨẬẪBCDĐEÉÈẺẸẼÊẾỀỂỆỄGHIÍÌỈỊĨKLMNOÓÒỎỌÕÔỐỒỔỘỖƠỚỜỞỢỠPQRSTUÚÙỦỤŨƯỨỪỬỮỰVXYÝỲỶỸỴWZJF";
-
-    for (int i = 0; i < a.length(); i++)
-    {
-        for (int j = 0; j < a1.length(); j++)
-        {
-            if (a[i] == a1[j])
-                a[i] = a2[j];
-        }
-    }
-    for (int i = 0; i < b.length(); i++)
-    {
-        for (int j = 0; j < a1.length(); j++)
-        {
-            if (b[i] == a1[j])
-                b[i] = a2[j];
-        }
-    }
-    if (a == b)
-    {
-        return 1;
-    }
-    else
-        return 0;
-}
 void chinhanhDN()
 {
     gotoXY(8, 2);
@@ -1597,6 +1539,63 @@ void chinhanhHaNoi()
     gotoXY(171, 8);
     wcout << L"───" << endl;
 }
+//================================================//
+void khungchua()
+{
+    clrscr();
+    for (int i = 0; i <= 45; i++)
+    {
+        for (int j = 0; j <= 199; j = j + 100)
+        {
+            textcolor(240);
+            gotoXY(j, i);
+            wcout << L"                                                                                                    ";
+        }
+    }
+}
+
+void resetbackground()
+{
+    clrscr();
+    for (int i = 0; i <= 45; i++)
+    {
+        for (int j = 0; j <= 200; j = j + 100)
+        {
+            textcolor(1);
+            gotoXY(j, i);
+            wcout << L"                                                                                                    ";
+        }
+    }
+}
+//================================================//
+int checkkitu(wstring a, wstring b)
+{
+    wstring a1 = L"aáàảạãăắằẳặẵâấầẩậẫbcdđeéèẻẹẽêếềểệễghiíìỉịĩklmnoóòỏọõôốồổộỗơớờởợỡpqrstuúùủụũưứừửữựvxyýỳỷỹỵwzjf";
+    wstring a2 = L"AÁÀẢẠÃĂẮẰẲẶẴÂẤẦẨẬẪBCDĐEÉÈẺẸẼÊẾỀỂỆỄGHIÍÌỈỊĨKLMNOÓÒỎỌÕÔỐỒỔỘỖƠỚỜỞỢỠPQRSTUÚÙỦỤŨƯỨỪỬỮỰVXYÝỲỶỸỴWZJF";
+
+    for (int i = 0; i < a.length(); i++)
+    {
+        for (int j = 0; j < a1.length(); j++)
+        {
+            if (a[i] == a1[j])
+                a[i] = a2[j];
+        }
+    }
+    for (int i = 0; i < b.length(); i++)
+    {
+        for (int j = 0; j < a1.length(); j++)
+        {
+            if (b[i] == a1[j])
+                b[i] = a2[j];
+        }
+    }
+    if (a == b)
+    {
+        return 1;
+    }
+    else
+        return 0;
+}
 
 void thanhsangkhungxuat(int x, int y, int bkg)
 {
@@ -1935,7 +1934,6 @@ wstring TachPhanTen(wstring ten)
 
 int check(wchar_t x, wchar_t y)
 {
-    // wstring a1 = L"aáàảạãăắằẳặẵâấầẩậẫbcdđeéèẻẹẽêếềểệễghiíìỉịĩklmnoóòỏọõôốồổộỗơớờởợỡpqrstuúùủụũưứừửữựvxyýỳỷỹỵwzjf";
     wstring a2 = L"AÁÀẢẠÃĂẮẰẲẶẴÂẤẦẨẬẪBCDĐEÉÈẺẸẼÊẾỀỂỆỄGHIÍÌỈỊĨKLMNOÓÒỎỌÕÔỐỒỔỘỖƠỚỜỞỢỠPQRSTUÚÙỦỤŨƯỨỪỬỮỰVXYÝỲỶỸỴWZJF";
 
     x = VietIn(x);
@@ -2022,37 +2020,18 @@ void sapxep(list &l)
     }
 }
 
-int TachSo(wstring x)
-{
-    wstring k = L"";
-    if (x[0] == 'M')
-    {
-        for (int i = 1; i < x.length(); i++)
-        {
-            k += x[i];
-        }
-    }
-    else
-    {
-        for (int i = 2; i < x.length(); i++)
-        {
-            k += x[i];
-        }
-    }
-    return stoi(k);
-}
-
 //=============== *************** ================//
 void MENU(list l, MyList *nv)
 {
     ShowCur(0);
     clrscr();
-    // khungchua();
-    // khung_st(45, 11);
-    // getch();
-    // resetbackground();
+    khungchua();
+    khung_st(45, 11);
+    getch();
+    resetbackground();
     wifstream filein;
-    wofstream fileout;
+    wofstream fileout1;
+    wofstream fileout2;
     int x = 75;
     int y = 4;
     int w = 60;
@@ -2070,16 +2049,9 @@ void MENU(list l, MyList *nv)
     string maso;
     string fullname;
     bool check;
-
-    int global;
-    int a = 0;
-
-    vector<int> array2;
-    vector<int> array1;
     while (true)
     {
         clrscr();
-        // khungchua()
         N_BOX(x, y, w, h, t_color, b_color, sl);
         check = true;
         while (check = true)
@@ -2124,7 +2096,6 @@ void MENU(list l, MyList *nv)
                         SetColor(3);
                         filein.open("NhanVien.txt", ios::in);
                         nv->DocDanhSachNhanVien(l, filein);
-
                         filein.close();
                         break;
                     }
@@ -2135,11 +2106,14 @@ void MENU(list l, MyList *nv)
                         clrscr();
                         textcolor(6);
                         SetColor(5);
-                        fileout.open("NHANVIEN_out.txt", ios::out);
-                        nv->XuatDanhSachVaoFile(l, fileout);
+                        fileout1.open("NHANVIEN_out.txt", ios::out);
+                        nv->XuatDanhSachVaoFile(l, fileout1);
+                        fileout1.close();
+                        fileout2.open("NhanVien.txt", ios::out);
+                        nv->XuatDanhSachVaoFileX(l, fileout2);
+                        fileout2.close();
                         wcout << L"\n\n\n\n\t\t\t\t\t\t\t\t\t\tXuất File Thành Công !";
                         wcout << L"\n\n\t\t\t\t\t\t\t\t\t\tNhấn Phím Bất Kì Để Trở Lại !";
-                        fileout.close();
                         getch();
                         break;
                     }
@@ -2273,14 +2247,15 @@ void MENU(list l, MyList *nv)
                                 }
                                 else if (c == 13) //phím enter
                                 {
+                                    SetColor(15);
                                     if (yp1 == 4)
                                     {
                                         clrscr();
                                         x = new NhanVienVanPhong();
                                         x->Nhap();
                                         nv->ThemVaoCuoi(l, x);
-                                        wcout << L"\n\n\n\n\t\t\t\t\t\t\t Đã ADD Nhân Viên thành công !";
-                                        wcout << L"\n\n\n\t\t\t\t\t\t\t Nhấn Phím Bất Kì Để Trở Lại !";
+                                        wcout << L"\n\n\n\n\t\t\t\t\t\t\t\t Đã ADD Nhân Viên thành công !";
+                                        wcout << L"\n\n\n\t\t\t\t\t\t\t\t Nhấn Phím Bất Kì Để Trở Lại !";
                                         getch();
                                     }
                                     else if (yp1 == 6)
@@ -2289,8 +2264,8 @@ void MENU(list l, MyList *nv)
                                         x = new NhanVienSanXuat();
                                         x->Nhap();
                                         nv->ThemVaoCuoi(l, x);
-                                        wcout << L"\n\n\n\n\t\t\t\t\t\t\t Đã ADD Nhân Viên thành công !";
-                                        wcout << L"\n\n\n\t\t\t\t\t\t\t Nhấn Phím Bất Kì Để Trở Lại !";
+                                        wcout << L"\n\n\n\n\t\t\t\t\t\t\t\t Đã ADD Nhân Viên thành công !";
+                                        wcout << L"\n\n\n\t\t\t\t\t\t\t\t Nhấn Phím Bất Kì Để Trở Lại !";
                                         getch();
                                     }
 
@@ -2300,8 +2275,8 @@ void MENU(list l, MyList *nv)
                                         x = new NhanVienMarketing();
                                         x->Nhap();
                                         nv->ThemVaoCuoi(l, x);
-                                        wcout << L"\n\n\n\n\t\t\t\t\t\t\t Đã ADD Nhân Viên thành công !";
-                                        wcout << L"\n\n\n\t\t\t\t\t\t\t Nhấn Phím Bất Kì Để Trở Lại !";
+                                        wcout << L"\n\n\n\n\t\t\t\t\t\t\t\t Đã ADD Nhân Viên thành công !";
+                                        wcout << L"\n\n\n\t\t\t\t\t\t\t\t Nhấn Phím Bất Kì Để Trở Lại !";
                                         getch();
                                     }
                                     else if (yp1 == 10)
@@ -2310,8 +2285,8 @@ void MENU(list l, MyList *nv)
                                         x = new NhanVienKinhDoanh();
                                         x->Nhap();
                                         nv->ThemVaoCuoi(l, x);
-                                        wcout << L"\n\n\n\n\t\t\t\t\t\t\t Đã ADD Nhân Viên thành công !";
-                                        wcout << L"\n\n\n\t\t\t\t\t\t\t Nhấn Phím Bất Kì Để Trở Lại !";
+                                        wcout << L"\n\n\n\n\t\t\t\t\t\t\t\t Đã ADD Nhân Viên thành công !";
+                                        wcout << L"\n\n\n\t\t\t\t\t\t\t\t Nhấn Phím Bất Kì Để Trở Lại !";
                                         getch();
                                     }
 

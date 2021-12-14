@@ -26,15 +26,6 @@ void ChiNhanh::ThemVaocuoi(list2 &l2, NhanVien *x)
     }
 }
 
-void ChiNhanh::XuatNhanVien(list2 l2)
-{
-    node *p = l2.pHead;
-    while (p != NULL)
-    {
-        p->data->Xuat();
-        p = p->pNext;
-    }
-}
 void ChiNhanh::AddNhanVien(list &l, list2 &l2)
 {
     node *p = l.pHead;

@@ -5,12 +5,9 @@ class NhanVienKinhDoanh : public NhanVien
 private:
     int SoHopDong;
 public:
-    // NhanVienKinhDoanh();
-    // ~NhanVienKinhDoanh();
     void Nhap();
 	void DocFile(wifstream &);
-	void Xuat();
-	void Xuatfile(wofstream &);
+	void Xuatfile(wofstream &,int);
     void setSHD (int);
     void Update();
     void DoUpdate(int);

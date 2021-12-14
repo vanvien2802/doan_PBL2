@@ -161,6 +161,14 @@ void NhanVien ::Nhap()
     wcout << L"\n\t\t\t\t\t\t\t\t\t\tNhập Họ Và Tên : ";
     getline(wcin, this->Name);
     fflush(stdin);
+    int count = 0;
+    for (int i = 0; i < this->Name.length(); i++)
+    {
+        if (this->Name[i] == L' ')
+        {
+            count++;
+        }
+    }
     while (true)
     {
         if (this->Name == L"")
@@ -171,6 +179,21 @@ void NhanVien ::Nhap()
             getline(wcin, this->Name);
             fflush(stdin);
         }
+        else if (count < 1)
+        {
+            wcout << L"\n\t\t\t\t\t\t\t\t\t|☘ ༒ ☘|᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁|☘ ༒ ☘|\n";
+            wcout << L"\n\t\t\t\t\t\t\t\t\t\tPhải nhập đầy đủ họ và tên !!!";
+            wcout << L"\n\t\t\t\t\t\t\t\t\t\tNhập Họ Và Tên : ";
+            getline(wcin, this->Name);
+            fflush(stdin);
+            for (int i = 0; i < this->Name.length(); i++)
+            {
+                if (this->Name[i] == L' ')
+                {
+                    count++;
+                }
+            }
+        }
         else
             break;
     }
@@ -179,6 +202,14 @@ void NhanVien ::Nhap()
     wcout << L"\n\t\t\t\t\t\t\t\t\t\tNhập Ngày Sinh : ";
     getline(wcin, this->NgaySinh);
     fflush(stdin);
+    count = 0;
+    for (int i = 0; i < this->NgaySinh.length(); i++)
+    {
+        if (this->NgaySinh[i] == L'/')
+        {
+            count++;
+        }
+    }
     while (true)
     {
         if (this->NgaySinh == L"")
@@ -188,6 +219,21 @@ void NhanVien ::Nhap()
             wcout << L"\n\t\t\t\t\t\t\t\t\t\tNhập Ngày Sinh : ";
             getline(wcin, this->NgaySinh);
             fflush(stdin);
+        }
+        else if (count != 2)
+        {
+            wcout << L"\n\t\t\t\t\t\t\t\t\t|☘ ༒ ☘|᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁᠁|☘ ༒ ☘|\n";
+            wcout << L"\n\t\t\t\t\t\t\t\t\t\tĐịnh dạng ngày không đúng !!!";
+            wcout << L"\n\t\t\t\t\t\t\t\t\t\tNhập Ngày Sinh : ";
+            getline(wcin, this->NgaySinh);
+            fflush(stdin);
+            for (int i = 0; i < this->NgaySinh.length(); i++)
+            {
+                if (this->NgaySinh[i] == L'/')
+                {
+                    count++;
+                }
+            }
         }
         else
             break;
@@ -281,36 +327,10 @@ void NhanVien ::DocFile(wifstream &filein)
     getline(filein, ChiNhanh, L',');
     filein.seekg(0, ios::cur);
     filein >> LuongCoBan;
-
-    // wchar_t x;
     filein >> x;
 }
 
-void NhanVien ::Xuat()
+void NhanVien ::Xuatfile(wofstream &fileout,int kt)
 {
-    _setmode(_fileno(stdout), _O_WTEXT); //needed for output
-    _setmode(_fileno(stdin), _O_WTEXT);  //needed for input
-    locale loc(locale(), new codecvt_utf8<wchar_t>);
-    wcout << L"ID Nhân Viên: " << this->ID << endl;
-    wcout << L"Họ Và Tên: " << this->Name << endl;
-    wcout << L"Ngày Sinh: " << this->NgaySinh << endl;
-    wcout << L"Số Điện Thoại: " << this->SoDienThoai << endl;
-    wcout << L"Địa Chỉ: " << this->Address << endl;
-    wcout << L"Lương Cơ Bản: " << this->LuongCoBan << endl;
-    wcout << L"Chi Nhánh: " << this->ChiNhanh << endl;
-}
-
-void NhanVien ::Xuatfile(wofstream &fileout)
-{
-    _setmode(_fileno(stdout), _O_WTEXT); //needed for output
-    _setmode(_fileno(stdin), _O_WTEXT);  //needed for input
-    locale loc(locale(), new codecvt_utf8<wchar_t>);
-    fileout.imbue(loc);
-    fileout << L"Mã số : " << this->ID << endl;
-    fileout << L"Họ và tên : " << this->Name << endl;
-    fileout << L"Ngày sinh : " << this->NgaySinh << endl;
-    fileout << L"Số điện thoại : " << this->SoDienThoai << endl;
-    fileout << L"Địa chỉ : " << this->Address << endl;
-    fileout << L"Chi Nhánh : " << this->ChiNhanh << endl;
-    fileout << L"Lương cơ bản : " << this->LuongCoBan << endl;
+    fileout << this->ID <<L' ' <<L','<< this->Name << L','<<this->NgaySinh<<L','<< this->SoDienThoai << L','<<this->Address<<L','<<this->ChiNhanh<<L','<<this->LuongCoBan<<L',';
 }

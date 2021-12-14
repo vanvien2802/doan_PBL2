@@ -23,8 +23,7 @@ protected:
 public:
     virtual void Nhap();
 	virtual void DocFile(wifstream &);
-	virtual void Xuat();
-	virtual void Xuatfile(wofstream &);
+	virtual void Xuatfile(wofstream &,int);
 	virtual long TinhLuong() = 0;
 	virtual void Update();
 	virtual void DoUpdate(int);

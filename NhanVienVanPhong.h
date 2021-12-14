@@ -10,8 +10,7 @@ public:
     // ~NhanVienVanPhong();
     void Nhap();
 	void DocFile(wifstream &);
-	void Xuat();
-	void Xuatfile(wofstream &);
+	void Xuatfile(wofstream &,int);
     void Update();
     void DoUpdate(int);
     void setDW(int );
